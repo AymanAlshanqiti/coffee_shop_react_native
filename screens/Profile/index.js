@@ -11,14 +11,18 @@ import {
   Spinner
 } from "native-base";
 
-class ProductCard extends Component {
+class Profile extends Component {
+  static navigationOptions = {
+    title: "My Profile"
+  };
+
   render() {
     return (
       <View>
-        <Text> Hi From Product Card</Text>
+        <Text> Hi From My Profile</Text>
       </View>
     );
   }
 }
 
-export default ProductCard;
+export default Profile;

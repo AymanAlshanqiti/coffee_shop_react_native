@@ -12,10 +12,14 @@ import {
 } from "native-base";
 
 class ProductsList extends Component {
+  static navigationOptions = {
+    title: "Products List"
+  };
+
   render() {
     return (
       <View>
-        <Text>Hi From Products List</Text>
+        <Text> Hi From Products List</Text>
       </View>
     );
   }

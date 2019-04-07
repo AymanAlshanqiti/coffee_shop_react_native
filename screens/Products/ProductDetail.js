@@ -15,7 +15,7 @@ class ProductDetail extends Component {
   render() {
     return (
       <View>
-        <Text>Hi From Product Detail</Text>
+        <Text> Hi From Product Detail</Text>
       </View>
     );
   }

@@ -11,14 +11,17 @@ import {
   Spinner
 } from "native-base";
 
-class ProductCard extends Component {
+class Cart extends Component {
+  static navigationOptions = {
+    title: "My Cart"
+  };
   render() {
     return (
       <View>
-        <Text> Hi From Product Card</Text>
+        <Text> Hi From Cart</Text>
       </View>
     );
   }
 }
 
-export default ProductCard;
+export default Cart;
