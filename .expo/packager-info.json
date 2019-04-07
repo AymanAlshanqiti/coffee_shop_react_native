@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 66973,
-  "expoServerNgrokUrl": "https://vv-pyi.anonymous.specialtycoffee-react-native.exp.direct",
-  "packagerNgrokUrl": "https://packager.vv-pyi.anonymous.specialtycoffee-react-native.exp.direct",
-  "ngrokPid": 66994
+  "devToolsPort": 19003,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
