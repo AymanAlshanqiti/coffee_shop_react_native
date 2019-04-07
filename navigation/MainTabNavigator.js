@@ -6,7 +6,6 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
-import TabBarIcon from "../components/TabBarIcon";
 import ProductsList from "../screens/Products";
 import ProductDetail from "../screens/Products/ProductDetail";
 

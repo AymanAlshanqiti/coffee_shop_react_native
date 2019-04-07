@@ -18,7 +18,7 @@ class Cart extends Component {
   render() {
     return (
       <View>
-        <Text> Hi From Cart</Text>
+        <Text> Hi From My Cart</Text>
       </View>
     );
   }
