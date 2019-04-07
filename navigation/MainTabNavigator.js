@@ -7,12 +7,15 @@ import {
 } from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
+import ProductsList from "../screens/Products/ProductsList";
+import ProductDetail from "../screens/Products/ProductDetail";
+
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen
+  Products: ProductsList,
+  Product: ProductDetail
 });
 
 HomeStack.navigationOptions = {

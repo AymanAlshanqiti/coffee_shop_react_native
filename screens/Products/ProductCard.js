@@ -11,14 +11,14 @@ import {
   Spinner
 } from "native-base";
 
-class ProductsList extends Component {
+class ProductCard extends Component {
   render() {
     return (
       <View>
-        <Text>Hi From Products List</Text>
+        <Text>Hi From Product Card</Text>
       </View>
     );
   }
 }
 
-export default ProductsList;
+export default ProductCard;
