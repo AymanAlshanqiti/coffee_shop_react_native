@@ -16,15 +16,15 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: "Cart",
+  tabBarLabel: "Products",
   tabBarIcon: ({ tintColor }) => {
-    let iconName = "shopping";
-    let iconType = "MaterialCommunityIcons";
+    let iconName = "ios-cafe";
+    let iconType = "Ionicons";
     return (
       <Icon
         name={iconName}
         type={iconType}
-        style={{ color: tintColor, fontSize: 23 }}
+        style={{ color: tintColor, fontSize: 25 }}
       />
     );
   },
@@ -53,15 +53,15 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: "Products",
+  tabBarLabel: "Cart",
   tabBarIcon: ({ tintColor }) => {
-    let iconName = "ios-cafe";
-    let iconType = "Ionicons";
+    let iconName = "shopping";
+    let iconType = "MaterialCommunityIcons";
     return (
       <Icon
         name={iconName}
         type={iconType}
-        style={{ color: tintColor, fontSize: 25 }}
+        style={{ color: tintColor, fontSize: 23 }}
       />
     );
   },
