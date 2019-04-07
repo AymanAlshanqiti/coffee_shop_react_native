@@ -7,13 +7,30 @@ import {
 } from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
-import SettingsScreen from "../screens/SettingsScreen";
+import ProductsList from "../screens/Products";
+import ProductDetail from "../screens/Products/ProductDetail";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen
-});
+import Cart from "../screens/Cart";
+import Profile from "../screens/Profile";
+
+const HomeStack = createStackNavigator(
+  {
+    Products: ProductsList,
+    Product: ProductDetail
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#FFF"
+      },
+      headerTitleStyle: {
+        fontWeight: "bold",
+        color: "#F12580"
+      },
+      headerTintColor: "#F12580"
+    }
+  }
+);
 
 HomeStack.navigationOptions = {
   tabBarLabel: "Products",
@@ -36,7 +53,7 @@ HomeStack.navigationOptions = {
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen
+    MyCart: Cart
   },
   {
     defaultNavigationOptions: {
@@ -45,7 +62,7 @@ const LinksStack = createStackNavigator(
       },
       headerTitleStyle: {
         fontWeight: "bold",
-        color: "gray"
+        color: "#F12580"
       },
       headerTintColor: "#F12580"
     }
@@ -71,9 +88,23 @@ LinksStack.navigationOptions = {
   }
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
-});
+const SettingsStack = createStackNavigator(
+  {
+    MyProfile: Profile
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#FFF"
+      },
+      headerTitleStyle: {
+        fontWeight: "bold",
+        color: "#F12580"
+      },
+      headerTintColor: "#F12580"
+    }
+  }
+);
 
 SettingsStack.navigationOptions = {
   tabBarLabel: "Profile",
