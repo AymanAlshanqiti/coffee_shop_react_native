@@ -1,6 +1,8 @@
 import * as actionTypes from "./types";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { AsyncStorage } from "react-native";
+import { setErrors } from "./errorsActions";
 
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/"
@@ -8,7 +10,7 @@ const instance = axios.create({
 
 export const checkForExpiredToken = () => {
   return async dispatch => {
-    const token = await localStorage.getItem("token");
+    const token = await AsyncStorage.getItem("token");
 
     if (token) {
       const currentTime = Date.now() / 1000;
@@ -26,10 +28,10 @@ export const checkForExpiredToken = () => {
 
 const setAuthToken = async token => {
   if (token) {
-    await localStorage.setItem("token", token);
+    await AsyncStorage.setItem("token", token);
     axios.defaults.headers.common.Authorization = `jwt ${token}`;
   } else {
-    await localStorage.removeItem("token");
+    await AsyncStorage.removeItem("token");
     delete axios.defaults.headers.common.Authorization;
   }
 };
@@ -39,7 +41,8 @@ const setCurrentUser = user => ({
   payload: user
 });
 
-export const login = (userData, history) => {
+export const login = (userData, navigation) => {
+  console.log("TCL: login -> userData", userData);
   return async dispatch => {
     try {
       const response = await instance.post("login/", userData);
@@ -48,26 +51,42 @@ export const login = (userData, history) => {
 
       setAuthToken(token);
       dispatch(setCurrentUser(decodedUser));
-      history.push("products");
+
+      navigation.replace("MyProfile", { user: true });
     } catch (error) {
+      dispatch(setErrors(error));
       console.error(error);
     }
   };
 };
 
-export const signup = (userData, history) => {
+export const signup = (userData, navigation) => {
   return async dispatch => {
     try {
-      await instance.post("register/", userData);
-      dispatch(login(userData, history));
+      let response = await instance.post("register/", userData);
+      let user = response.data;
+      let decodedUser = jwt_decode(user.token);
+
+      setAuthToken(user.token);
+      dispatch(setCurrentUser(decodedUser));
+
+      navigation.replace("MyProfile", { user: true });
+
+      // dispatch(login(userData, history));
     } catch (error) {
+      dispatch(setErrors(error));
       console.error(error);
     }
   };
 };
-export const logout = () => {
-  setAuthToken();
-  return setCurrentUser();
+export const logout = navigation => {
+  return dispatch => {
+    setAuthToken();
+    dispatch(setCurrentUser());
+
+    // TODO: Make sure to name the nav screen to Login
+    navigation.replace("Login");
+  };
 };
 
 export const fetchProfileDetail = () => {

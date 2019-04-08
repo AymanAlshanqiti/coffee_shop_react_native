@@ -22,13 +22,24 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 import styles from "./styles";
 
+import LogoutBtn from "../Authentication/LogoutBtn";
+
 class ProductsList extends Component {
-  static navigationOptions = {
-    title: "Products List"
+  static navigationOptions = ({ navigation }) => {
+    let user = navigation.getParam("user");
+    console.log("TCL: ProductsList -> staticnavigationOptions -> user", user);
+
+    return {
+      title: "Products List",
+      headerRight: user ? <LogoutBtn /> : null
+    };
   };
   async componentDidMount() {
     await this.props.getAllProducts();
+    let user = this.props.navigation.getParam("user");
+    console.log("TCL: Profile -> componentDidMount -> user", user);
   }
+  componentDidUpdate() {}
 
   render() {
     let { products, productsLoading } = this.props.productsReducer;
@@ -92,6 +103,7 @@ class ProductsList extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.profileReducer.user,
   productsReducer: state.productsReducer
 });
 
