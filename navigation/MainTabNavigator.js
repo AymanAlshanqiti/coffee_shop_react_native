@@ -12,6 +12,10 @@ import ProductDetail from "../screens/Products/ProductDetail";
 import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 
+// Auth Flow screens
+import Login from "../screens/Authentication/Login";
+import Signup from "../screens/Authentication/Signup";
+
 const HomeStack = createStackNavigator(
   {
     Products: ProductsList,
@@ -89,9 +93,12 @@ CartStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    MyProfile: Profile
+    MyProfile: Profile,
+    Login: Login,
+    Signup: Signup
   },
   {
+    initialRouteName: "Login",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: "#FFF"
