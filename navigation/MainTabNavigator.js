@@ -50,7 +50,7 @@ HomeStack.navigationOptions = {
   }
 };
 
-const LinksStack = createStackNavigator(
+const CartStack = createStackNavigator(
   {
     MyCart: Cart
   },
@@ -68,7 +68,7 @@ const LinksStack = createStackNavigator(
   }
 );
 
-LinksStack.navigationOptions = {
+CartStack.navigationOptions = {
   tabBarLabel: "Cart",
   tabBarIcon: ({ tintColor }) => {
     let iconName = "shopping";
@@ -87,7 +87,7 @@ LinksStack.navigationOptions = {
   }
 };
 
-const SettingsStack = createStackNavigator(
+const ProfileStack = createStackNavigator(
   {
     MyProfile: Profile
   },
@@ -105,7 +105,7 @@ const SettingsStack = createStackNavigator(
   }
 );
 
-SettingsStack.navigationOptions = {
+ProfileStack.navigationOptions = {
   tabBarLabel: "Profile",
   tabBarIcon: ({ tintColor }) => {
     let iconName = "user-tie";
@@ -126,6 +126,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack
+  CartStack,
+  ProfileStack
 });

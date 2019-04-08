@@ -9,6 +9,7 @@ const instance = axios.create({
 
 export const getAllProducts = () => {
   return async dispatch => {
+    dispatch(setLoading());
     try {
       let res = await instance.get("products/list/");
       let products = res.data;
