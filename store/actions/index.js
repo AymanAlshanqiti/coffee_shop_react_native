@@ -11,7 +11,8 @@ export {
   createOrder,
   addProductToCart,
   orderCheckout,
-  fetchProfileDetail
+  fetchProfileDetail,
+  setProfileLoading
 } from "./profileActions";
 
 export {

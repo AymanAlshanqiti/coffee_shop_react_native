@@ -8,6 +8,8 @@ const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/"
 });
 
+// ======== Auth Actions ======== //
+
 export const checkForExpiredToken = () => {
   return async dispatch => {
     const token = await AsyncStorage.getItem("token");
@@ -89,8 +91,13 @@ export const logout = navigation => {
   };
 };
 
+// ======================== //
+
+// ======== Profile Actions ======== //
+
 export const fetchProfileDetail = () => {
   return async dispatch => {
+    dispatch(setProfileLoading());
     try {
       const res = await instance.get("profile/detail/");
 
@@ -137,6 +144,13 @@ export const fetchOrderDetail = orderID => {
   };
 };
 
+export const setProfileLoading = () => ({
+  type: actionTypes.SET_PROFILE_LOADING
+});
+
+// ======================== //
+
+// ======== Order Cart Actions ======== //
 export const getUserOrders = () => {
   return async dispatch => {
     try {
@@ -200,3 +214,4 @@ export const orderCheckout = orderID => {
     }
   };
 };
+// ======================== //
