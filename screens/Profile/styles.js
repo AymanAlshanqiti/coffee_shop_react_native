@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    color: "white",
+    color: "black",
     marginTop: 10,
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "bold"
   },
   buttonContainer: {
     marginTop: 10,

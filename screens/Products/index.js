@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, ImageBackground } from "react-native";
 import {
   Left,
   Text,
@@ -13,7 +13,6 @@ import {
   Thumbnail,
   ListItem,
   Card,
-  ImageBackground,
   List,
   Content
 } from "native-base";
@@ -52,6 +51,7 @@ class ProductsList extends Component {
     if (productsLoading) return <Spinner />;
 
     productList = products.map(prod => {
+      console.log("TCL: render -> prod.image", prod.image);
       return (
         //   <ImageBackground
         //   source={{ uri: prod.image }}
