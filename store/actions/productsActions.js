@@ -31,7 +31,7 @@ export const getProductDetail = prodID => {
     try {
       let res = await instance.get(`products/detail/${prodID}/`);
       let productInfo = res.data;
-
+      console.log("getProductDetail  => productINFO: ", productInfo);
       dispatch({
         type: actionTypes.GET_PRODUCT_DETAIL,
         payload: productInfo

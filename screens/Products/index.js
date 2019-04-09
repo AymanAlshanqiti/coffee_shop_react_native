@@ -21,6 +21,9 @@ import {
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 import styles from "./styles";
+import ProductDetail from "./ProductDetail";
+
+import { withNavigation } from "react-navigation";
 
 class ProductsList extends Component {
   static navigationOptions = {
@@ -53,20 +56,19 @@ class ProductsList extends Component {
           <ListItem
             button
             style={styles.listitem}
-
-            // onPress={() =>
-            //   this.props.navigation.navigate("Product", {
-            //     product: ProductInfo
-            //   })
-            // }
+            onPress={() =>
+              this.props.navigation.navigate("Product", {
+                productID: prod.id
+              })
+            }
           >
             <Card style={styles.transparent}>
               <CardItem key={prod.id} style={styles.transparent}>
                 <Left>
                   <Thumbnail
-                    bordered
+                    // bordered
                     source={{ uri: prod.image }}
-                    style={styles.thumbnail}
+                    // style={styles.thumbnail}
                   />
                   <Text style={styles.text}>
                     {prod.name}
