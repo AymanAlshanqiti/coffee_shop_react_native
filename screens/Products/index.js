@@ -95,9 +95,9 @@ class ProductsList extends Component {
     });
     console.log("TCL: ProductsList -> render -> products", products);
     return (
-      <View>
+      <Content>
         <List>{productList}</List>
-      </View>
+      </Content>
     );
   }
 }

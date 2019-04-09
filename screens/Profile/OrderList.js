@@ -12,6 +12,8 @@ import {
   Body,
   Right
 } from "native-base";
+
+import { ScrollView } from "react-native";
 import OrderRow from "./OrderRow";
 
 export default class OrderList extends Component {
@@ -33,7 +35,9 @@ export default class OrderList extends Component {
           </Body>
           <Right />
         </Header>
-        <List>{orderRows}</List>
+        <ScrollView>
+          <List>{orderRows}</List>
+        </ScrollView>
       </View>
     );
   }
