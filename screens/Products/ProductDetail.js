@@ -59,6 +59,7 @@ class ProductDetail extends Component {
                 source={{ uri: productInfo.image }}
                 style={{
                   height: "100%",
+
                   width: "100%",
                   padding: 50,
                   margin: 5
