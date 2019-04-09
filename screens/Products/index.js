@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, ImageBackground } from "react-native";
 import {
   Left,
   Text,
@@ -13,7 +13,6 @@ import {
   Thumbnail,
   ListItem,
   Card,
-  ImageBackground,
   List,
   Content
 } from "native-base";
@@ -25,13 +24,24 @@ import ProductDetail from "./ProductDetail";
 
 import { withNavigation } from "react-navigation";
 
+import LogoutBtn from "../Authentication/LogoutBtn";
+
 class ProductsList extends Component {
-  static navigationOptions = {
-    title: "Products List"
+  static navigationOptions = ({ navigation }) => {
+    let user = navigation.getParam("user");
+    console.log("TCL: ProductsList -> staticnavigationOptions -> user", user);
+
+    return {
+      title: "Products List",
+      headerRight: user ? <LogoutBtn /> : null
+    };
   };
   async componentDidMount() {
     await this.props.getAllProducts();
+    let user = this.props.navigation.getParam("user");
+    console.log("TCL: Profile -> componentDidMount -> user", user);
   }
+  componentDidUpdate() {}
 
   render() {
     let { products, productsLoading } = this.props.productsReducer;
@@ -44,6 +54,7 @@ class ProductsList extends Component {
     if (productsLoading) return <Spinner />;
 
     productList = products.map(prod => {
+      console.log("TCL: render -> prod.image", prod.image);
       return (
         //   <ImageBackground
         //   source={{ uri: prod.image }}
@@ -86,14 +97,15 @@ class ProductsList extends Component {
     });
     console.log("TCL: ProductsList -> render -> products", products);
     return (
-      <View>
+      <Content>
         <List>{productList}</List>
-      </View>
+      </Content>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  user: state.profileReducer.user,
   productsReducer: state.productsReducer
 });
 

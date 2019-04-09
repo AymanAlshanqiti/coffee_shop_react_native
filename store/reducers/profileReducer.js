@@ -10,7 +10,8 @@ const initialState = {
   userOrderStatusCart: null,
   userOrderStatusCartLoading: true,
 
-  profile: null
+  profile: null,
+  profileLoading: true
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -30,7 +31,8 @@ const profileReducer = (state = initialState, action) => {
     case actionTypes.FETCH_PROFILE_DETAIL:
       return {
         ...state,
-        profile: action.payload
+        profile: action.payload,
+        profileLoading: false
       };
     case actionTypes.PROFILE_UPDATE:
       return {
@@ -64,6 +66,11 @@ const profileReducer = (state = initialState, action) => {
         userOrderProduct: action.payload
       };
 
+    case actionTypes.SET_LOADING:
+      return {
+        ...state,
+        profileLoading: true
+      };
     default:
       return state;
   }
