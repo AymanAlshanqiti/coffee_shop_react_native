@@ -4,12 +4,16 @@ import { AppLoading, Asset, Font, Icon } from "expo";
 import AppNavigator from "./navigation/AppNavigator";
 import { Provider } from "react-redux";
 import store from "./store";
+import { AsyncStorage } from "react-native";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false
   };
 
+  async componentDidMount() {
+    await AsyncStorage.getItem("token");
+  }
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
