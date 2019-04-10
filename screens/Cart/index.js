@@ -21,6 +21,9 @@ import {
 } from "native-base";
 
 class Cart extends Component {
+  state = {
+    userCart: null
+  };
   static navigationOptions = {
     title: "My Cart"
   };
@@ -33,14 +36,23 @@ class Cart extends Component {
     }
     if (this.props.userOrderStatusCart) {
       await this.props.getUserCart(this.props.userOrderStatusCart.id);
+      this.setState({ userCart: this.props.userCart });
     }
   };
 
   async componentDidUpdate(prevProps) {
-	console.log("TCL: Cart -> componentDidUpdate -> prevProps", prevProps)
-	console.log("TCL: Cart -> componentDidUpdate -> this.props", this.props)
-
-    
+    if (
+      prevProps.userCart.order_products.length !=
+      this.props.userCart.order_products.length
+    ) {
+      this.setState({ userCart: this.props.userCart });
+    }
+    console.log("TCL: Cart -> componentDidUpdate -> prevProps", prevProps);
+    console.log("TCL: Cart -> componentDidUpdate -> this.props", this.props);
+    console.log(
+      "TCL: Cart -> componentDidUpdate -> newUserCart",
+      this.props.userCart.order_products
+    );
   }
 
   getCartStatusOrder = () => {
@@ -61,16 +73,37 @@ class Cart extends Component {
   };
 
   handleCheckout = async orderID => {
-    if (this.props.userOrderStatusCart.order_products_count > 0) {
-      await this.props.orderCheckout(orderID, { status: 2 });
+    console.log(
+      "this.props.userOrderStatusCart.order_products_count => ",
+      this.state.userCart.order_products.length
+    );
+    if (this.state.userCart.order_products.length > 0) {
+      await this.props.orderCheckout(this.state.userCart.id, { status: 2 });
       await this.props.createOrder();
       await this.props.getUserOrders();
+      await this.props.getUserCartOrder(this.props.userOrderStatusCart);
+      await this.props.getUserCart(this.props.userOrderStatusCart.id);
       this.props.navigation.navigate("MyProfile");
     }
   };
 
   render() {
-    if (this.props.userCartLoading) {
+    if (!this.props.user) {
+      return (
+        <Container>
+          <Content>
+            <Text>You have to login to access the cart</Text>
+            <Button
+              full
+              danger
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              <Text>Checkout</Text>
+            </Button>
+          </Content>
+        </Container>
+      );
+    } else if (this.props.user && this.props.userCartLoading) {
       return <Spinner />;
     }
     let cartProducts = null;
@@ -94,6 +127,7 @@ class Cart extends Component {
         </List>
       ));
     }
+
     return (
       <Container>
         <Content>

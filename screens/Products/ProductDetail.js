@@ -30,9 +30,12 @@ class ProductDetail extends Component {
     quantity: 1
   };
 
-  handleAddItem = () => {
+  handleAddItem = async () => {
     if (this.props.user) {
-      this.props.addProductToCart(this.state);
+      await this.props.addProductToCart(this.state);
+      await this.props.getUserOrders();
+      await this.props.getUserCartOrder(this.props.userOrderStatusCart);
+      await this.props.getUserCart(this.props.userOrderStatusCart.id);
       this.props.navigation.goBack();
     } else {
       this.props.navigation.navigate("Login");
@@ -164,7 +167,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getProduct: prodID => dispatch(actionCreators.getProductDetail(prodID)),
     addProductToCart: product =>
-      dispatch(actionCreators.addProductToCart(product))
+      dispatch(actionCreators.addProductToCart(product)),
+    getUserOrders: () => dispatch(actionCreators.getUserOrders()),
+    getUserCartOrder: order => dispatch(actionCreators.getUserCartOrder(order)),
+    getUserCart: orderID => dispatch(actionCreators.getUserCart(orderID))
   };
 };
 
