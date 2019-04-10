@@ -2,14 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 973,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
-
-  "packagerPort": 19003,
-  "packagerPid": 5752,
-  "expoServerNgrokUrl": "https://cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
-  "packagerNgrokUrl": "https://packager.cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
-  "ngrokPid": 5774
+  "packagerPid": 4977,
+  "expoServerNgrokUrl": "https://33-tqg.anonymous.specialtycoffee-react-native.exp.direct",
+  "packagerNgrokUrl": "https://packager.33-tqg.anonymous.specialtycoffee-react-native.exp.direct",
+  "ngrokPid": 5002
 }
