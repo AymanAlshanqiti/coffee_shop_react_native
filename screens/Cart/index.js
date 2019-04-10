@@ -47,12 +47,6 @@ class Cart extends Component {
     ) {
       this.setState({ userCart: this.props.userCart });
     }
-    console.log("TCL: Cart -> componentDidUpdate -> prevProps", prevProps);
-    console.log("TCL: Cart -> componentDidUpdate -> this.props", this.props);
-    console.log(
-      "TCL: Cart -> componentDidUpdate -> newUserCart",
-      this.props.userCart.order_products
-    );
   }
 
   getCartStatusOrder = () => {
@@ -72,18 +66,14 @@ class Cart extends Component {
     await this.props.getUserCart(this.props.userOrderStatusCart.id);
   };
 
-  handleCheckout = async orderID => {
-    console.log(
-      "this.props.userOrderStatusCart.order_products_count => ",
-      this.state.userCart.order_products.length
-    );
+  handleCheckout = async () => {
     if (this.state.userCart.order_products.length > 0) {
       await this.props.orderCheckout(this.state.userCart.id, { status: 2 });
       await this.props.createOrder();
       await this.props.getUserOrders();
       await this.props.getUserCartOrder(this.props.userOrderStatusCart);
       await this.props.getUserCart(this.props.userOrderStatusCart.id);
-      this.props.navigation.navigate("MyProfile");
+      this.props.navigation.navigate("Products");
     }
   };
 
@@ -98,7 +88,7 @@ class Cart extends Component {
               danger
               onPress={() => this.props.navigation.navigate("Login")}
             >
-              <Text>Checkout</Text>
+              <Text>Login</Text>
             </Button>
           </Content>
         </Container>
@@ -132,11 +122,7 @@ class Cart extends Component {
       <Container>
         <Content>
           {cartProducts}
-          <Button
-            full
-            danger
-            onPress={() => this.handleCheckout(this.props.userCart.id)}
-          >
+          <Button full danger onPress={this.handleCheckout}>
             <Text>Checkout</Text>
           </Button>
         </Content>
