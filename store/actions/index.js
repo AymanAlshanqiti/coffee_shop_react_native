@@ -10,7 +10,6 @@ export {
   getUserCartOrder,
   createOrder,
   addProductToCart,
-  orderCheckout,
   fetchProfileDetail,
   setProfileLoading
 } from "./profileActions";
@@ -21,4 +20,4 @@ export {
   setLoading
 } from "./productsActions";
 
-export { getUserCart, deleteCartProduct } from "./ordersActions";
+export { getUserCart, deleteCartProduct, orderCheckout } from "./ordersActions";

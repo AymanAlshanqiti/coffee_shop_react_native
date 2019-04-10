@@ -6,9 +6,9 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
+// Components
 import ProductsList from "../screens/Products";
 import ProductDetail from "../screens/Products/ProductDetail";
-
 import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, TextInput } from "react-native";
 import {
   Left,
   Text,
@@ -24,30 +24,39 @@ import styles from "./styles";
 import * as actionCreators from "../../store/actions";
 
 class ProductDetail extends Component {
-  // static navigationOptions = ({ navigation }) => {
-  //   return {
-  //     title: navigation.getParam("productID")
-  //   };
-  // };
-  handleAddItem = () => {
-    const newItem = {
-      ...this.state,
-      quantity: 1
-    };
-    this.props.addItem(newItem);
+  state = {
+    order: null,
+    product: null,
+    quantity: 1
+  };
+
+  handleAddItem = async () => {
+    if (this.props.user) {
+      await this.props.addProductToCart(this.state);
+      await this.props.getUserOrders();
+      await this.props.getUserCartOrder(this.props.userOrderStatusCart);
+      await this.props.getUserCart(this.props.userOrderStatusCart.id);
+      this.props.navigation.goBack();
+    } else {
+      this.props.navigation.navigate("Login");
+    }
   };
 
   async componentDidMount() {
     const productID = this.props.navigation.getParam("productID");
-
-    console.log("productID => productID: ", productID);
     await this.props.getProduct(productID);
+
+    if (this.props.userOrderStatusCart) {
+      await this.setState({
+        order: this.props.userOrderStatusCart.id,
+        product: this.props.productInfo.id
+      });
+    }
   }
 
   render() {
     const productID = this.props.navigation.getParam("productID");
     productInfo = this.props.productInfo;
-    console.log("productInfo productInfo productInfo => ", productInfo);
 
     return (
       <Content>
@@ -122,6 +131,15 @@ class ProductDetail extends Component {
               </Text>
             </Left>
           </ListItem>
+          <TextInput
+            style={styles.authTextInput}
+            autoCapitalize="none"
+            placeholder="1"
+            type="number"
+            placeholderTextColor="#A47B88"
+            value={this.state.quantity}
+            onChangeText={quantity => this.setState({ quantity })}
+          />
 
           <Button full danger onPress={this.handleAddItem}>
             <Text>Add</Text>
@@ -138,7 +156,10 @@ const mapStateToProps = state => {
     loading: state.productsReducer.productInfoLoading,
 
     user: state.profileReducer.user,
-    userLoading: state.profileReducer.userLoading
+    userLoading: state.profileReducer.userLoading,
+
+    userOrderStatusCart: state.profileReducer.userOrderStatusCart,
+    userOrderStatusCartLoading: state.profileReducer.userOrderStatusCartLoading
   };
 };
 
@@ -146,7 +167,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getProduct: prodID => dispatch(actionCreators.getProductDetail(prodID)),
     addProductToCart: product =>
-      dispatch(actionCreators.addProductToCart(product))
+      dispatch(actionCreators.addProductToCart(product)),
+    getUserOrders: () => dispatch(actionCreators.getUserOrders()),
+    getUserCartOrder: order => dispatch(actionCreators.getUserCartOrder(order)),
+    getUserCart: orderID => dispatch(actionCreators.getUserCart(orderID))
   };
 };
 
