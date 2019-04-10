@@ -99,37 +99,115 @@ class Cart extends Component {
     let cartProducts = null;
     if (this.props.userCart) {
       cartProducts = this.props.userCart.order_products.map(product => (
-        <List>
-          <ListItem selected>
-            <Left>
-              <Text> {product.product.name}</Text>
-            </Left>
-            <Right>
-              <Button
-                full
-                danger
-                onPress={() => this.handleDeleteProduct(product.id)}
-              >
-                <Text>Delete</Text>
-              </Button>
-            </Right>
-          </ListItem>
-        </List>
+        <Button bordered style={styles.ClassroomsContainer}>
+          <Left style={{ left: 10 }}>
+            <Text style={{ color: "#F12580" }}>
+              {product.quantity}x{" "}
+              <Text style={{ color: "#F12580" }}>{product.product.name} </Text>
+            </Text>
+
+            <Text note>
+              {" "}
+              Sub Total: {"    "}
+              <Text note>
+                {" "}
+                {product.total_price} {"    "}
+              </Text>
+            </Text>
+          </Left>
+          <Button
+            onPress={() => this.handleDeleteProduct(product.id)}
+            style={{
+              backgroundColor: "#fff"
+            }}
+          >
+            <Icon
+              name="delete"
+              type="AntDesign"
+              style={{
+                fontSize: 18,
+                left: 5,
+                top: 0,
+                color: "red"
+              }}
+            />
+          </Button>
+
+          <View style={{ right: 10 }} />
+        </Button>
       ));
     }
 
     return (
-      <Container>
-        <Content>
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
           {cartProducts}
-          <Button full danger onPress={this.handleCheckout}>
-            <Text>Checkout</Text>
-          </Button>
-        </Content>
-      </Container>
+        </ScrollView>
+        <Button
+          full
+          danger
+          onPress={this.handleCheckout}
+          style={styles.createClassroomContainer}
+        >
+          <Text style={styles.createClassroomText}>Checkout</Text>
+        </Button>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FBFBFB"
+  },
+
+  contentContainer: {
+    paddingTop: 30
+  },
+
+  createClassroomText: {
+    color: "#FFF",
+    fontSize: 15,
+    alignSelf: "center",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  createClassroomContainer: {
+    position: "absolute",
+    bottom: 15,
+    left: 15,
+    right: 15,
+    height: 50,
+    shadowColor: "black",
+    shadowOffset: { height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    borderRadius: 10,
+    alignItems: "center",
+    backgroundColor: "#F12580"
+  },
+  ClassroomsContainer: {
+    position: "relative",
+    top: 0,
+    marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    height: 70,
+    shadowColor: "black",
+    shadowOffset: { height: -1 },
+    shadowOpacity: 0.05,
+    borderRadius: 8,
+    borderColor: "#F9F9F9",
+    shadowRadius: 3,
+    alignItems: "center",
+    backgroundColor: "#FFF"
+  }
+});
 
 const mapStateToProps = state => {
   return {
