@@ -154,6 +154,7 @@ export const setProfileLoading = () => ({
 export const getUserOrders = () => {
   return async dispatch => {
     try {
+      console.log("TCL: getUserOrders -> res");
       const res = await instance.get("orders/list/");
       const orders = res.data;
       dispatch({
@@ -162,6 +163,7 @@ export const getUserOrders = () => {
       });
     } catch (error) {
       console.error(error);
+      dispatch(setErrors());
     }
   };
 };
@@ -189,6 +191,7 @@ export const createOrder = order => {
 };
 
 export const addProductToCart = product => {
+  console.log("profileActions => addProductToCart => product: ", product);
   return async dispatch => {
     try {
       const res = await instance.post("orderproduct/create/", product);

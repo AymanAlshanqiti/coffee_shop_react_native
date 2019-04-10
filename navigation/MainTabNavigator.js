@@ -6,9 +6,9 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
+// Components
 import ProductsList from "../screens/Products";
 import ProductDetail from "../screens/Products/ProductDetail";
-
 import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 
@@ -19,7 +19,8 @@ import Signup from "../screens/Authentication/Signup";
 const HomeStack = createStackNavigator(
   {
     Products: ProductsList,
-    Product: ProductDetail
+    Product: ProductDetail,
+    Login: Login
   },
   {
     defaultNavigationOptions: {

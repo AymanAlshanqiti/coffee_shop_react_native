@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, TextInput } from "react-native";
 import {
   Left,
   Text,
@@ -24,30 +24,35 @@ import styles from "./styles";
 import * as actionCreators from "../../store/actions";
 
 class ProductDetail extends Component {
-  // static navigationOptions = ({ navigation }) => {
-  //   return {
-  //     title: navigation.getParam("productID")
-  //   };
-  // };
+  state = {
+    order: null,
+    product: null,
+    quantity: 1
+  };
+
   handleAddItem = () => {
-    const newItem = {
-      ...this.state,
-      quantity: 1
-    };
-    this.props.addItem(newItem);
+    if (this.props.user) {
+      this.props.addProductToCart(this.state);
+    } else {
+      this.props.navigation.push("Login");
+    }
   };
 
   async componentDidMount() {
     const productID = this.props.navigation.getParam("productID");
-
-    console.log("productID => productID: ", productID);
     await this.props.getProduct(productID);
+
+    if (this.props.userOrderStatusCart) {
+      await this.setState({
+        order: this.props.userOrderStatusCart.id,
+        product: this.props.productInfo.id
+      });
+    }
   }
 
   render() {
     const productID = this.props.navigation.getParam("productID");
     productInfo = this.props.productInfo;
-    console.log("productInfo productInfo productInfo => ", productInfo);
 
     return (
       <Content>
@@ -122,6 +127,15 @@ class ProductDetail extends Component {
               </Text>
             </Left>
           </ListItem>
+          <TextInput
+            style={styles.authTextInput}
+            autoCapitalize="none"
+            placeholder="1"
+            type="number"
+            placeholderTextColor="#A47B88"
+            value={this.state.quantity}
+            onChangeText={quantity => this.setState({ quantity })}
+          />
 
           <Button full danger onPress={this.handleAddItem}>
             <Text>Add</Text>
@@ -138,7 +152,10 @@ const mapStateToProps = state => {
     loading: state.productsReducer.productInfoLoading,
 
     user: state.profileReducer.user,
-    userLoading: state.profileReducer.userLoading
+    userLoading: state.profileReducer.userLoading,
+
+    userOrderStatusCart: state.profileReducer.userOrderStatusCart,
+    userOrderStatusCartLoading: state.profileReducer.userOrderStatusCartLoading
   };
 };
 
