@@ -74,10 +74,14 @@ class OrderRow extends Component {
       >
         <Left>
           <Text style={{ fontWeight: "bold" }}>{order.id}</Text>
+          <Text style={{ marginLeft: 10, fontWeight: "bold" }}>
+            {order.status.title}
+          </Text>
         </Left>
 
         <Body>
           <Text style={{ marginLeft: -50 }}>{date}</Text>
+
           <Text note style={{ marginLeft: -40 }}>
             Total Price {order.total_price} SAR
           </Text>

@@ -10,13 +10,17 @@ import {
   View,
   Left,
   Body,
-  Right
+  Right,
+  Icon
 } from "native-base";
+
+import { withNavigation } from "react-navigation";
 
 import { ScrollView } from "react-native";
 import OrderRow from "./OrderRow";
+import MoreOrders from "./MoreOrders";
 
-export default class OrderList extends Component {
+class OrderList extends Component {
   render() {
     let orders = this.props.prevOrders;
     console.log("TCL: OrderList -> render -> orders", orders);
@@ -24,6 +28,8 @@ export default class OrderList extends Component {
     let orderRows = orders.map(ord => {
       return <OrderRow key={ord.id} order={ord} />;
     });
+
+    let isMoreOrders = orderRows.length > 3;
     return (
       <View>
         <Header style={{ backgroundColor: "white" }}>
@@ -36,9 +42,34 @@ export default class OrderList extends Component {
           <Right />
         </Header>
         <ScrollView>
-          <List>{orderRows}</List>
+          <List>
+            {isMoreOrders ? orderRows.slice(0, 3) : orderRows}
+
+            {isMoreOrders && (
+              <ListItem
+                button
+                onPress={() =>
+                  this.props.navigation.navigate("MoreOrders", {
+                    orderRows: orderRows
+                  })
+                }
+              >
+                <Left>
+                  <Text>More Orders</Text>
+                </Left>
+
+                <Body />
+
+                <Right>
+                  <Icon name="arrow-forward" />
+                </Right>
+              </ListItem>
+            )}
+          </List>
         </ScrollView>
       </View>
     );
   }
 }
+
+export default withNavigation(OrderList);
