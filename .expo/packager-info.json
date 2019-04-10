@@ -1,9 +1,21 @@
 {
-  "devToolsPort": 19003,
+  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+  
   "packagerPid": 97677,
   "expoServerNgrokUrl": "https://h8-t8d.anonymous.specialtycoffee-react-native.exp.direct",
   "packagerNgrokUrl": "https://packager.h8-t8d.anonymous.specialtycoffee-react-native.exp.direct",
   "ngrokPid": 97695
+ 
+  "packagerPid": 77629,
+  "expoServerNgrokUrl": "https://cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
+  "packagerNgrokUrl": "https://packager.cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
+  "ngrokPid": 77641
+ 
+  "packagerPid": 84156,
+  "expoServerNgrokUrl": "https://h8-t8d.anonymous.specialtycoffee-react-native.exp.direct",
+  "packagerNgrokUrl": "https://packager.h8-t8d.anonymous.specialtycoffee-react-native.exp.direct",
+  "ngrokPid": 84174
+ 
 }
