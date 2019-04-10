@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#EF2175",
     height: 200
   },
   avatar: {
@@ -56,6 +56,13 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 30,
     backgroundColor: "#DC1B50"
+  },
+  prodInfo: {
+    alignSelf: "center"
+  },
+  prodRow: {
+    color: "#AE4432",
+    fontWeight: "bold"
   }
 });
 
