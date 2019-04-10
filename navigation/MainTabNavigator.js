@@ -15,6 +15,8 @@ import Profile from "../screens/Profile";
 // Auth Flow screens
 import Login from "../screens/Authentication/Login";
 import Signup from "../screens/Authentication/Signup";
+import OrderDetail from "../screens/Profile/OrderDetail";
+import MoreOrders from "../screens/Profile/MoreOrders";
 
 const HomeStack = createStackNavigator(
   {
@@ -95,7 +97,9 @@ const ProfileStack = createStackNavigator(
   {
     MyProfile: Profile,
     Login: Login,
-    Signup: Signup
+    Signup: Signup,
+    OrderDetail: OrderDetail,
+    MoreOrders: MoreOrders
   },
   {
     initialRouteName: "Login",

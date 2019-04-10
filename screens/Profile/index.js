@@ -70,9 +70,8 @@ class Profile extends Component {
               <Text>{prevOrders.length}</Text>
             </Badge>
           </View>
-
-          <OrderList prevOrders={prevOrders} />
         </View>
+        <OrderList prevOrders={prevOrders} />
       </View>
     );
   }

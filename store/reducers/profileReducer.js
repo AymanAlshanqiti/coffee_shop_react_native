@@ -66,7 +66,7 @@ const profileReducer = (state = initialState, action) => {
         userOrderProduct: action.payload
       };
 
-    case actionTypes.SET_LOADING:
+    case actionTypes.SET_PROFILE_LOADING:
       return {
         ...state,
         profileLoading: true

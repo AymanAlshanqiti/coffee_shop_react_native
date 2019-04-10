@@ -6,4 +6,10 @@
   "expoServerNgrokUrl": null,
   "packagerNgrokUrl": null,
   "ngrokPid": null
+
+  "packagerPort": 19003,
+  "packagerPid": 5752,
+  "expoServerNgrokUrl": "https://cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
+  "packagerNgrokUrl": "https://packager.cb-ccr.anonymous.specialtycoffee-react-native.exp.direct",
+  "ngrokPid": 5774
 }

@@ -13,6 +13,10 @@ import {
   Badge
 } from "native-base";
 
+import { withNavigation } from "react-navigation";
+
+import OrderDetail from "./OrderDetail";
+
 const formatAMPM = date => {
   let hours = date.getHours();
   let minutes = date.getMinutes();
@@ -52,20 +56,32 @@ const formatTimeS = ts => {
   return datestr + " | " + time;
 };
 
-export default class OrderRow extends Component {
+class OrderRow extends Component {
   render() {
     let order = this.props.order;
+    let date = formatTimeS(order.created_at);
     console.log("TCL: OrderRow -> render -> order", order);
     return (
-      <ListItem button>
+      <ListItem
+        button
+        onPress={() =>
+          this.props.navigation.navigate("OrderDetail", {
+            orderProducts: order.order_products,
+            orderDate: date,
+            totalPrice: order.total_price
+          })
+        }
+      >
         <Left>
           <Text style={{ fontWeight: "bold" }}>{order.id}</Text>
+          <Text style={{ marginLeft: 10, fontWeight: "bold" }}>
+            {order.status.title}
+          </Text>
         </Left>
 
         <Body>
-          <Text style={{ marginLeft: -50 }}>
-            {formatTimeS(order.created_at)}
-          </Text>
+          <Text style={{ marginLeft: -50 }}>{date}</Text>
+
           <Text note style={{ marginLeft: -40 }}>
             Total Price {order.total_price} SAR
           </Text>
@@ -85,3 +101,5 @@ export default class OrderRow extends Component {
     );
   }
 }
+
+export default withNavigation(OrderRow);
