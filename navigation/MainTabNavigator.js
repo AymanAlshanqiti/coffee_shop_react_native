@@ -6,6 +6,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
+import OrderDetail from "../screens/Profile/OrderDetail";
 import ProductsList from "../screens/Products";
 import ProductDetail from "../screens/Products/ProductDetail";
 
@@ -95,7 +96,8 @@ const ProfileStack = createStackNavigator(
   {
     MyProfile: Profile,
     Login: Login,
-    Signup: Signup
+    Signup: Signup,
+    OrderDetail: OrderDetail
   },
   {
     initialRouteName: "Login",
