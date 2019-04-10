@@ -20,16 +20,16 @@ import { ScrollView } from "react-native";
 import OrderRow from "./OrderRow";
 
 class MoreOrders extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Previous Orders"
+    };
+  };
   render() {
-    // let orders = this.props.navigation.state.params;
     let ordersObj = this.props.navigation.getParam("orderRows");
-    // console.log("TCL: MoreOrders -> render -> orders", orders);
-    let orderList = ordersObj.map(elm => elm.props.order);
-    console.log("TCL: MoreOrders -> render -> orderList", orderList);
 
-    // let orders = this.props.prevOrders;
-    // console.log("TCL: MoreOrders -> render -> orders", orders);
-    // if (!orders) return <Spinner />;
+    let orderList = ordersObj.map(elm => elm.props.order);
+
     let orderRows = orderList.map(ord => {
       return <OrderRow key={ord.id} order={ord} />;
     });
@@ -44,4 +44,4 @@ class MoreOrders extends Component {
   }
 }
 
-export default withNavigation(MoreOrders);
+export default MoreOrders;
