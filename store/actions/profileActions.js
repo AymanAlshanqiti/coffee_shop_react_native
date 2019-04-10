@@ -206,15 +206,3 @@ export const addProductToCart = product => {
     }
   };
 };
-
-export const orderCheckout = orderID => {
-  return async dispatch => {
-    try {
-      await instance.post("orders/update/", orderID);
-      getUserOrders();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-};
-// ======================== //

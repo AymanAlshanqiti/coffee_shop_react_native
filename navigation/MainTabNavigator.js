@@ -19,8 +19,7 @@ import Signup from "../screens/Authentication/Signup";
 const HomeStack = createStackNavigator(
   {
     Products: ProductsList,
-    Product: ProductDetail,
-    Login: Login
+    Product: ProductDetail
   },
   {
     defaultNavigationOptions: {
