@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {
-  Container,
   Header,
-  Content,
   List,
   ListItem,
   Text,
@@ -18,13 +16,13 @@ import { withNavigation } from "react-navigation";
 
 import { ScrollView } from "react-native";
 import OrderRow from "./OrderRow";
-import MoreOrders from "./MoreOrders";
 
 class OrderList extends Component {
   render() {
     let orders = this.props.prevOrders;
     console.log("TCL: OrderList -> render -> orders", orders);
     if (!orders) return <Spinner />;
+
     let orderRows = orders.map(ord => {
       return <OrderRow key={ord.id} order={ord} />;
     });
@@ -50,7 +48,7 @@ class OrderList extends Component {
                 button
                 onPress={() =>
                   this.props.navigation.navigate("MoreOrders", {
-                    orderRows: orderRows
+                    orderRows: orders
                   })
                 }
               >
