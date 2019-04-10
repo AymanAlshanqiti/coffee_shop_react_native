@@ -33,6 +33,7 @@ class ProductDetail extends Component {
   handleAddItem = () => {
     if (this.props.user) {
       this.props.addProductToCart(this.state);
+      this.props.navigation.goBack();
     } else {
       this.props.navigation.push("Login");
     }
