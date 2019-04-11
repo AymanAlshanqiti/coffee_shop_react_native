@@ -13,6 +13,7 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await AsyncStorage.getItem("token");
+    console.disableYellowBox = true;
   }
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
