@@ -27,7 +27,7 @@ class OrderList extends Component {
       return <OrderRow key={ord.id} order={ord} />;
     });
 
-    let isMoreOrders = orderRows.length > 3;
+    let isMoreOrders = orderRows.length > 2;
     return (
       <View>
         <Header style={{ backgroundColor: "white" }}>
@@ -41,7 +41,7 @@ class OrderList extends Component {
         </Header>
         <ScrollView>
           <List>
-            {isMoreOrders ? orderRows.slice(0, 3) : orderRows}
+            {isMoreOrders ? orderRows.slice(0, 2) : orderRows}
 
             {isMoreOrders && (
               <ListItem
