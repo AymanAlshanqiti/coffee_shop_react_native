@@ -170,7 +170,7 @@ class ProductDetail extends Component {
                 backgroundColor: "#fe687b"
               }}
             >
-              <Text style={styles.createClassroomText}>Checkout</Text>
+              <Text style={styles.createClassroomText}>Add To the Cart</Text>
             </Button>
           </Card>
         </Content>
