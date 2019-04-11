@@ -32,7 +32,7 @@ class OrderList extends Component {
       <View>
         <Header style={{ backgroundColor: "white" }}>
           <Left>
-            <Text style={{ marginLeft: 10, fontWeight: "bold" }}>ID</Text>
+            <Text style={{ marginLeft: 10, fontWeight: "bold" }}>ID </Text>
           </Left>
           <Body>
             <Text style={{ fontWeight: "bold" }}>Previous Order</Text>

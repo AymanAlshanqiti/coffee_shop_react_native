@@ -88,7 +88,7 @@ class OrderRow extends Component {
         </Body>
         <Right>
           <Left>
-            <Badge primary>
+            <Badge primary style={{ backgroundColor: "#fe687b" }}>
               <Text>{order.order_products.length}</Text>
             </Badge>
           </Left>

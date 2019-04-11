@@ -57,18 +57,9 @@ class Profile extends Component {
             <Text style={styles.name}>
               {profile.customer.first_name + " " + profile.customer.last_name}
             </Text>
-            <Text style={styles.description}>Total Orders</Text>
-            <Badge
-              style={{
-                alignItems: "center",
-                marginLeft: 100,
-                marginTop: 10,
-                width: 150
-              }}
-              success
-            >
-              <Text>{prevOrders.length}</Text>
-            </Badge>
+            <Text style={styles.description}>
+              Total Orders: {prevOrders.length}
+            </Text>
           </View>
         </View>
         <OrderList prevOrders={prevOrders} />
@@ -90,11 +81,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Profile);
-
-/*
-<TouchableOpacity
-  style={styles.buttonContainer}
-  onPress={this.handleLogout}
->
-  <Text style={{ fontWeight: "bold" }}>Log out</Text>
-</TouchableOpacity> */
