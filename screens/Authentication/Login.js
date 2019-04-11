@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { Button } from "native-base";
+import { Button, Spinner } from "native-base";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 
 // Stores
@@ -12,8 +12,7 @@ import styles from "./styles.js";
 
 class Login extends Component {
   static navigationOptions = {
-    headerRight: null,
-    title: "Log in"
+    headerRight: null
   };
 
   state = {
@@ -32,6 +31,7 @@ class Login extends Component {
   }
 
   render() {
+    if (this.props.user) return <Spinner />;
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Login</Text>
