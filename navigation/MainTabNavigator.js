@@ -30,9 +30,9 @@ const HomeStack = createStackNavigator(
       },
       headerTitleStyle: {
         fontWeight: "bold",
-        color: "#F12580"
+        color: "#fe687b"
       },
-      headerTintColor: "#F12580"
+      headerTintColor: "#fe687b"
     }
   }
 );
@@ -51,7 +51,7 @@ HomeStack.navigationOptions = {
     );
   },
   tabBarOptions: {
-    activeTintColor: "#F12580",
+    activeTintColor: "#fe687b",
     inactiveTintColor: "#CCC"
   }
 };
@@ -67,9 +67,9 @@ const CartStack = createStackNavigator(
       },
       headerTitleStyle: {
         fontWeight: "bold",
-        color: "#F12580"
+        color: "#fe687b"
       },
-      headerTintColor: "#F12580"
+      headerTintColor: "#fe687b"
     }
   }
 );
@@ -88,7 +88,7 @@ CartStack.navigationOptions = {
     );
   },
   tabBarOptions: {
-    activeTintColor: "#F12580",
+    activeTintColor: "#fe687b",
     inactiveTintColor: "#CCC"
   }
 };
@@ -109,9 +109,9 @@ const ProfileStack = createStackNavigator(
       },
       headerTitleStyle: {
         fontWeight: "bold",
-        color: "#F12580"
+        color: "#fe687b"
       },
-      headerTintColor: "#F12580"
+      headerTintColor: "#fe687b"
     }
   }
 );
@@ -130,7 +130,7 @@ ProfileStack.navigationOptions = {
     );
   },
   tabBarOptions: {
-    activeTintColor: "#F12580",
+    activeTintColor: "#fe687b",
     inactiveTintColor: "#CCC"
   }
 };

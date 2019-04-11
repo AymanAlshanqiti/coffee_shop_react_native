@@ -83,13 +83,13 @@ class Cart extends Component {
         <Container>
           <Content>
             <Text>You have to login to access the cart</Text>
-            <Button
-              full
-              danger
+
+            <Text
+              style={styles.createClassroomText}
               onPress={() => this.props.navigation.navigate("Login")}
             >
-              <Text>Login</Text>
-            </Button>
+              Login
+            </Text>
           </Content>
         </Container>
       );
@@ -101,9 +101,9 @@ class Cart extends Component {
       cartProducts = this.props.userCart.order_products.map(product => (
         <Button bordered style={styles.ClassroomsContainer}>
           <Left style={{ left: 10 }}>
-            <Text style={{ color: "#F12580" }}>
+            <Text style={{ color: "#fe687b", marginBottom: 5 }}>
               {product.quantity}x{" "}
-              <Text style={{ color: "#F12580" }}>{product.product.name} </Text>
+              <Text style={{ color: "#fe687b" }}>{product.product.name} </Text>
             </Text>
 
             <Text note>
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     borderRadius: 10,
     alignItems: "center",
-    backgroundColor: "#F12580"
+    backgroundColor: "#fe687b"
   },
   ClassroomsContainer: {
     position: "relative",
